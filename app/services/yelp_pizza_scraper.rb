@@ -7,21 +7,43 @@ class YelpPizzaScraper
     @query = query
   end
 
-  def search
-    mechanize.get(YELP_URL) do |page|
-      results = page.form_with(action: '/search') do |f|
-        f['find_desc'] = query + ' pizza'
-        f['find_loc'] = 'New York City'
-      end.submit
+  def self.search(query)
+    new(query).first_ten_reviews
+  end
 
-      restaurant_link = results.links.select do |link|
-        link if link.uri.to_s =~ /\/biz/
-      end.first
-
-      restaurant_page = restaurant_link.click
-
-      reviews = restaurant_page.search('div.review').first(10)
+  def first_ten_reviews
+    reviews.map do |review|
+      YelpReview.build_from_review_and_page(review, restaurant_page)
     end
+  end
+
+  private
+
+  def yelp
+    mechanize.get(YELP_URL)
+  end
+
+  def results
+    yelp.form_with(action: '/search') do |f|
+      f['find_desc'] = query + ' pizza'
+      f['find_loc'] = 'New York City'
+    end.submit
+  end
+
+  def restaurant_link
+    results.links.select do |link|
+      link if link.uri.to_s =~ /\/biz/
+    end.first
+  end
+
+  def restaurant_page
+    @_page ||= restaurant_link.click
+  end
+
+  def reviews
+    restaurant_page.search(
+      'div[data-review-id].review'
+    ).first(10)
   end
 
   def mechanize

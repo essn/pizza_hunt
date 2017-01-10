@@ -1,24 +1,15 @@
-# README
+# PizzaHunt
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+I'm in NYC and I want pizza, where do I go?
 
-Things you may want to cover:
+## To run app
 
-* Ruby version
+* `bundle install`
 
-* System dependencies
+* `rails s -b webrick`
 
-* Configuration
+* Visit `localhost:3000`
 
-* Database creation
+## To run specs
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* `rspec spec --format documentation`

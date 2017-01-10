@@ -31,7 +31,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'slim-rails'
 gem 'bourbon'
 gem 'bitters'
-gem 'neat'
 gem 'mechanize'
 
 group :production do

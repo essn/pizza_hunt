@@ -1,8 +1,6 @@
 // Breakpoints
 $medium-screen: 600px;
 $large-screen: 900px;
-$mobile: new-breakpoint($medium-screen 12);
-$desktop: new-breakpoint($large-screen 6);
 
 // Typography
 $base-font-family: $font-stack-system;

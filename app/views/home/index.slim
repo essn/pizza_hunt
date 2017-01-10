@@ -1,0 +1,4 @@
+#results
+  = form_for :search, html: { class: 'search-form' }, url: search_index_path, method: 'GET', remote: true do |f|
+    = f.text_field :q, placeholder: "Search for a pizza place!"
+    = f.submit 'Search', id: 'search-form-submit'

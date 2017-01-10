@@ -1,0 +1,29 @@
+body {
+  margin: 0px;
+  background-color: $secondary-background-color;
+}
+
+table {
+  border-radius: 3px;
+}
+
+.wrapper {
+  margin: 8px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $yelp-red;
+  height: 75px;
+
+  i {
+    margin: 0 10px 1em;
+  }
+
+  h1, i {
+    color: white;
+  }
+}
+
